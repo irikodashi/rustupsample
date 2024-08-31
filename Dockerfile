@@ -1,12 +1,13 @@
-FROM ubuntu:22.04
+FROM debian:bookworm-slim
 
 # Set working directory
 WORKDIR /root/develop
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     build-essential \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Install rustup and Rust (default toolchain)
